@@ -51,14 +51,21 @@ Show/dump scenario instead of running benchmark:
 List participants instead of running benchmark:
 
  % bencher ... --list-participants
+ % bencher ... --list-participants -l ;# show detail
 
 List datasets instead of running benchmark:
 
  % bencher ... --list-datasets
+ % bencher ... --list-datasets -l ;# show detail
 
 List items instead of running benchmark:
 
  % bencher ... --list-items
+ % bencher ... --list-items -l ;# show detail
+
+Show items' codes instead of running benchmark:
+
+ % bencher ... --show-items-codes
 
 Show items' results instead of running benchmark:
 
@@ -78,6 +85,7 @@ To list available perls (same as C<perlbrew list>, but also shows whether a perl
 has Bencher):
 
  % bencher --list-perls
+ % bencher --list-perls -l
 
 To run a scenario against all perls which have Bencher:
 
