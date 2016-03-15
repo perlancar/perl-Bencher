@@ -1,5 +1,10 @@
 Revision history for Bencher
 
+0.39    2016-03-15 (PERLANCAR)
+
+	- Update to Bencher::Backend 0.39.
+
+
 0.38    2016-03-15 (PERLANCAR)
 
 	- [Incompatible change] Split backend to Bencher-Backend to reduce
