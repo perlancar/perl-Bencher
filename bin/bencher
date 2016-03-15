@@ -11,7 +11,7 @@ use Perinci::CmdLine::Any;
 
 binmode(STDOUT, ":utf8");
 Perinci::CmdLine::Any->new(
-    url => '/Bencher/bencher',
+    url => '/Bencher/Backend/bencher',
     log => 1,
     pass_cmdline_object => 1,
 )->run;
@@ -71,8 +71,3 @@ select datasets/modules/items):
 
 
 =head1 DESCRIPTION
-
-
-=head1 SEE ALSO
-
-L<Bencher>

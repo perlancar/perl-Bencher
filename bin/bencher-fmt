@@ -7,14 +7,14 @@ use 5.010001;
 use strict;
 use warnings;
 
-use Bencher;
+use Bencher::Backend;
 use Function::Fallback::CoreOrPP qw(clone);
 use Perinci::CmdLine::Any;
 
 our %SPEC;
 
 $SPEC{format_result} = do {
-    my $meta = clone($Bencher::SPEC{format_result});
+    my $meta = clone($Bencher::Backend::SPEC{format_result});
 
     # currently we only use default formatters, but we will allow this
     delete $meta->{args}{formatters};
@@ -33,7 +33,7 @@ sub format_result {
 
     my $envres = JSON::MaybeXS::decode_json($_[0]);
 
-    [200, "OK", Bencher::format_result($envres)];
+    [200, "OK", Bencher::Backend::format_result($envres)];
 }
 
 binmode(STDOUT, ":utf8");

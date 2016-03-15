@@ -1,5 +1,11 @@
 Revision history for Bencher
 
+0.38    2016-03-15 (PERLANCAR)
+
+        - Split backend to Bencher-Backend. This distribution now contains the
+          CLI scripts only.
+
+
 0.37    2016-03-13 (PERLANCAR)
 
         - In addition to 'cmdline', you can also use 'cmdline_template' in
