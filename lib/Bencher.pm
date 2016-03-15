@@ -85,8 +85,10 @@ default true, can be set to false if you want to exclude participant by default
 when running benchmark, unless the participant is explicitly included).
 
 Or, if you are benchmarking commands, you specify C<cmdline> (array or strings,
-or strings) instead. An array cmdline will not use shell, while the string
-version will use shell. See L<Bencher::Scenario::Interpreters>.
+or strings) or C<cmdline_template> (array/str) or C<perl_cmdline> or
+C<perl_cmdline_template> instead. An array cmdline will not use shell, while the
+string version will use shell. C<perl_cmdline*> are the same as C<cmdline*>
+except the first implicit argument/prefix is perl.
 
 =over
 
