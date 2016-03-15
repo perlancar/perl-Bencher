@@ -2,8 +2,13 @@ Revision history for Bencher
 
 0.38    2016-03-15 (PERLANCAR)
 
-        - Split backend to Bencher-Backend. This distribution now contains the
-          CLI scripts only.
+	- [Incompatible change] Split backend to Bencher-Backend to reduce
+	  dependencies (this is part of developing support for benchmarking
+	  against multiple perls/module versions).
+
+	- Add option --noreturn-meta to disable returning extra metadata.
+
+	- Add action: show-items-codes.
 
 
 0.37    2016-03-13 (PERLANCAR)
