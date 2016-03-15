@@ -69,5 +69,33 @@ select datasets/modules/items):
 
  % bencher ... --include-participant-pattern 'Tiny|Lite' --exclude-participant 'HTTP::Tiny'
 
+=head2 Benchmarking against multiple perls
+
+You need to install L<App::perlbrew> first and then install some perls. Also,
+install at least L<Bencher::Backend> to each perl you want to benchmark.
+
+To list available perls (same as C<perlbrew list>, but also shows whether a perl
+has Bencher):
+
+ % bencher --list-perls
+
+To run a scenario against all perls which have Bencher:
+
+ % bencher -m ScenarioModule --multiperl ...
+
+To run a scenario against some perls:
+
+ % bencher -m ScenarioModule --multiperl --include-perl perl-5.20.3 --include-perl perl-5.22.1 ...
+
+=head2 Benchmarking multiple versions of a module
+
+For example, if version 0.02 of a module is installed and you want to benchmark
+against version 0.01 (in C</my/home/lib>):
+
+ % bencher -m ScenarioModule --multimodver Module::Name -I /my/home/lib ...
+
+Note that C<Module::Name> must be among the modules that are being benchmarked
+(according to the scenario).
+
 
 =head1 DESCRIPTION

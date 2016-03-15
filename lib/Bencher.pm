@@ -80,15 +80,15 @@ Aside from C<fcall_template>, you can also use C<code_template> (a string
 containing arbitrary code) or C<code> (a subroutine reference, just like what
 you would provide to the Benchmark module).
 
-Other properties you can add to a participant: C<include_by_default> (bool,
-default true, can be set to false if you want to exclude participant by default
-when running benchmark, unless the participant is explicitly included).
-
 Or, if you are benchmarking commands, you specify C<cmdline> (array or strings,
 or strings) or C<cmdline_template> (array/str) or C<perl_cmdline> or
 C<perl_cmdline_template> instead. An array cmdline will not use shell, while the
 string version will use shell. C<perl_cmdline*> are the same as C<cmdline*>
 except the first implicit argument/prefix is perl.
+
+Other properties you can add to a participant: C<include_by_default> (bool,
+default true, can be set to false if you want to exclude participant by default
+when running benchmark, unless the participant is explicitly included).
 
 =over
 
@@ -114,6 +114,18 @@ groups of participants having the same tags.
 =item * function (str)
 
 =item * fcall_template (str)
+
+=item * code_template (str)
+
+=item * code (code)
+
+=item * cmdline (str|array of str)
+
+=item * cmdline_template (str|array of str)
+
+=item * perl_cmdline (str|array of str)
+
+=item * perl_cmdline_template (str|array of str)
 
 =item * result_is_list (bool, default 0)
 
