@@ -60,35 +60,89 @@ An example scenario (from C<Bench::Scenario::Example>):
 =head2 participants
 
 B<participants> (array) lists Perl code (or external command) that we want to
-benchmark. Instead of just list of coderefs like what L<Benchmark> expects, you
-can use C<fcall_template> instead. It is a string containing a function call
-code. From this value, Bencher can extract the name of the module and function
-used (and can help you load the modules, benchmark startup overhead of all
-involved modules, etc). It can also contain variables enclosed in angle
-brackets, like C<< <text> >> which will be replaced with actual data/value
-later.
+benchmark.
 
-You can also add C<name> key to a participant so you can refer to it more easily
-later, e.g.:
+=head3 Specifying participant's code
+
+There are several kinds of code you can specify:
+
+First, you can just specify C<module> (str, a Perl module name). This is useful
+when running scenario in L<module_startup mode/"Running benchmark in module
+startup mode">. When not in module startup mode, there is no code in this
+participant to run.
+
+You can also specify C<modules> (an array of Perl module names) if you want to
+benchmark several modules together. Similarly, this is only useful for running
+in module startup mode.
+
+You can specify C<code> (a coderef) which contains the code to benchmark.
+However, the point of Bencher is to use C<fcall_template> or at least
+C<code_template> to be able to easily permute the code with datasets (see
+below). So you should only specify C<code> when you cannot specify
+C<fcall_template> or C<code_template> or the other way.
+
+You can specify C<fall_template>, and this is the recommended way whenever
+possible. It is a string containing a function call code, in the form of:
+
+ MODULENAME::FUNCTIONAME(ARG, ...)
+
+or
+
+ CLASSNAME->FUNCTIONAME(ARG, ...)
+
+For example:
+
+ Text::Levenshtein::fastdistance(<word1>, <word2>)
+
+Another example:
+
+ Module::CoreList->is_code(<module>)
+
+It can be used to benchmark a function call or a method call. From this format,
+Bencher can easily extract the module name so user can also run in module
+startup mode.
+
+By using a template, Bencher can generate actual codes from this template by
+combining it with datasets. The words enclosed in C<< <...> >> will be replaced
+with actual arguments specified in L</"datasets">.
+
+Aside from C<fcall_template>, you can also use C<code_template> (a string
+containing arbitrary code), in the cases where the code you want to benchmark
+cannot be expressed as a simple function/method call, for example (taken from
+L<Bencher::Scenario::ComparisonOps>):
+
+ participants => [
+     {name=>'1k-numeq'      , code_template=>'my $val =     1; for (1..1000) { if ($val ==     1) {} if ($val ==     2) {} }'},
+     {name=>'1k-streq-len1' , code_template=>'my $val = "a"  ; for (1..1000) { if ($val eq "a"  ) {} if ($val eq "b"  ) {} }'},
+     {name=>'1k-streq-len3' , code_template=>'my $val = "foo"; for (1..1000) { if ($val eq "foo") {} if ($val eq "bar") {} }'},
+     {name=>'1k-streq-len10', code_template=>'my $val = "abcdefghij"; for (1..1000) { if ($val eq "abcdefghij") {} if ($val eq "klmnopqrst") {} }'},
+ ],
+
+Like in C<fcall_template>, words enclosed in C<< <...> >> will be replaced with
+actual data. When generating actual code, Bencher will enclose the code template
+with C<sub { .. }>.
+
+Or, if you are benchmarking external commands, you specify C<cmdline> (array or
+strings, or strings) or C<cmdline_template> (array/str) or C<perl_cmdline> or
+C<perl_cmdline_template> instead. An array cmdline will not use shell, while the
+string version will use shell. C<perl_cmdline*> are the same as C<cmdline*>
+except the first implicit argument/prefix is perl.
+
+=head3 Specifying participant's name
+
+By default, Bencher will attempt to figure out the name for a participant (a
+sequence number starting from 1, a module name or module name followed by
+function name, etc). You can also specify name for a participant explicitly so
+you can refer to it more easily later, e.g.:
 
  participants => [
      {name=>'pp', fcall_template=>'List::MoreUtils::PP::uniq(@{<array>})'},
      {name=>'xs', fcall_template=>'List::MoreUtils::XS::uniq(@{<array>})'},
  ],
 
-Aside from C<fcall_template>, you can also use C<code_template> (a string
-containing arbitrary code) or C<code> (a subroutine reference, just like what
-you would provide to the Benchmark module).
+=head3 List of properties for a participant
 
-Or, if you are benchmarking commands, you specify C<cmdline> (array or strings,
-or strings) or C<cmdline_template> (array/str) or C<perl_cmdline> or
-C<perl_cmdline_template> instead. An array cmdline will not use shell, while the
-string version will use shell. C<perl_cmdline*> are the same as C<cmdline*>
-except the first implicit argument/prefix is perl.
-
-Other properties you can add to a participant: C<include_by_default> (bool,
-default true, can be set to false if you want to exclude participant by default
-when running benchmark, unless the participant is explicitly included).
+This is a reference section.
 
 =over
 
@@ -111,6 +165,8 @@ groups of participants having the same tags.
 
 =item * module (str)
 
+=item * modules (array of str)
+
 =item * function (str)
 
 =item * fcall_template (str)
@@ -128,6 +184,15 @@ groups of participants having the same tags.
 =item * perl_cmdline_template (str|array of str)
 
 =item * result_is_list (bool, default 0)
+
+This is useful when dumping item's codes, so Bencher will use a list context
+when receiving result.
+
+=item * include_by_default> (bool, default 1)
+
+Can be set to false if you want to exclude participant by default when running
+benchmark, unless the participant is explicitly included e.g. using
+C<--include-participant> command-line option.
 
 =back
 
@@ -303,6 +368,32 @@ C<scenario>, C<stash>, C<result>.
 You can use this hook to, e.g.: modify the result in some way.
 
 =back
+
+
+=head1 USING THE BENCHER COMMAND-LINE TOOL
+
+=head2 Running benchmark
+
+=head2 Running benchmark in module startup mode
+
+Module startup mode can be activated either by specifying C<--module-startup>
+option from the command-line, or by setting C<module_startup> property to true
+in the scenario.
+
+In this mode, instead of running each participant's code, module name will be
+extracted from each participant and this will be benchmarked instead:
+
+ perl -MModule1 -e1
+ perl -MModule2 -e1
+ ...
+ perl -e1 ;# the baseline, for comparison
+
+Basically, this mode tries to measure the startup overhead of each module in
+isolation.
+
+Module name can be extracted from a participant if a participant specifies
+C<module> or C<fcall_template> or C<modules>. When a participant does not
+contain any module name, it will be skipped.
 
 
 =head1 SEE ALSO
