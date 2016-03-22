@@ -1,5 +1,15 @@
 Revision history for Bencher
 
+0.42    2016-03-22 (PERLANCAR)
+
+        - Synchronize version number with Bencher::Backend (0.42).
+
+        - [doc] Expand the 'participants' section, update to Bencher::Backend
+          0.42 (introduced 'modules' property in participant).
+
+        - [doc] Tweak/fix examples in Synopsis.
+
+
 0.39    2016-03-15 (PERLANCAR)
 
 	- Update to Bencher::Backend 0.39.
