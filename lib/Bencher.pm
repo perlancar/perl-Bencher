@@ -282,6 +282,8 @@ From DefHash, longer description in Markdown.
 Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
 C<--precision> (CLI).
 
+=item * include_result_size (bool)
+
 =item * on_failure (str, "skip"|"die")
 
 For a command participant, failure means non-zero exit code. For a Perl-code
