@@ -68,8 +68,8 @@ There are several kinds of code you can specify:
 
 First, you can just specify C<module> (str, a Perl module name). This is useful
 when running scenario in L<module_startup mode/"Running benchmark in module
-startup mode">. When not in module startup mode, there is no code in this
-participant to run.
+startup mode">. Also useful to instruct Bencher to load the module. When not in
+module startup mode, there is no code in this participant to run.
 
 You can also specify C<modules> (an array of Perl module names) if you want to
 benchmark several modules together. Similarly, this is only useful for running
