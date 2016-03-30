@@ -53,6 +53,11 @@ List participants instead of running benchmark:
  % bencher ... --list-participants
  % bencher ... --list-participants -l ;# show detail
 
+List participating Perl modules (modules mentioned by all the participants):
+
+ % bencher ... --list-participant-modules
+ % bencher ... --list-participant-modules -l ;# show detail
+
 List datasets instead of running benchmark:
 
  % bencher ... --list-datasets
