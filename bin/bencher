@@ -79,7 +79,8 @@ select datasets/modules/items):
 =head2 Benchmarking against multiple perls
 
 You need to install L<App::perlbrew> first and then install some perls. Also,
-install at least L<Bencher::Backend> to each perl you want to benchmark.
+install at least L<Bencher::Backend> to each perl you want to run the benchmark
+on.
 
 To list available perls (same as C<perlbrew list>, but also shows whether a perl
 has Bencher):
