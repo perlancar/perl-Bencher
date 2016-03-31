@@ -1,5 +1,12 @@
 Revision history for Bencher
 
+0.46.1  2016-03-31 (PERLANCAR)
+
+        - [dist] Forgot to bump prereq version Bencher::Backend 0.46.
+
+        - CLI script: Include description from Bencher::Backend.
+
+
 0.46    2016-03-31 (PERLANCAR)
 
         - Synchronize version number with Bencher::Backend (0.46).
