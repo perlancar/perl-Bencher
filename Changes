@@ -1,5 +1,10 @@
 Revision history for Bencher
 
+0.46    2016-03-31 (PERLANCAR)
+
+        - Synchronize version number with Bencher::Backend (0.46).
+
+
 0.42    2016-03-22 (PERLANCAR)
 
         - Synchronize version number with Bencher::Backend (0.42).
