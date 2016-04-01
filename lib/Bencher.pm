@@ -13,33 +13,34 @@ See L<bencher> CLI.
 
 =head1 DESCRIPTION
 
-Bencher is a benchmark framework. It helps you:
+Bencher is a benchmark framework. The main feature of Bencher is permuting list
+of Perl codes with list of arguments into benchmark items, and then benchmark
+them. You can run only some of the items as well as filter codes and arguments
+to use. You can also permute multiple perls and multiple module versions.
 
-=over
 
-=item * specify what Perl code (functions/module names or coderefs) or external commands you want to benchmark
+=head1 TERMINOLOGY
 
-along with a set of data (function or command-line arguments).
+B<Scenario>. A hash data structure that lists I<participants>, I<datasets>, and
+other things. The bencher CLI can accept a scenario from a module (under
+C<Bencher::Scenario::*> namespace), a script, or from command-line option. See
+L</"SCENARIO">.
 
-=item * run the items
+B<Participant>. What to run or benchmark. Usually a Perl code or code template,
+or a command or command template. See L</"participants">.
 
-You can run all the items, only some of them, with some/all combinations of
-arguments, with different module paths/versions, different perl paths, and so
-on.
+B<Dataset>. Arguments or parameters to permute with a participant. See
+L</"datasets">.
 
-=item * save the result
-
-=item * display the result(s) and graph them
-
-=item * send the result to a server
-
-=back
+B<(Benchmark) item>. Participant that has been permuted with dataset into code
+ready to run. Usually a scenario does not contain items directly, but only
+participants and datasets, and let Bencher permute them into items.
 
 
 =head1 SCENARIO
 
 The core data structure that you need to prepare is the B<scenario>. It is a
-L<DefHash> (i.e. just a regular Perl hash), the two most important keys of this
+L<DefHash> (i.e. just a regular Perl hash). The two most important keys of this
 hash are: B<participants> and B<datasets>.
 
 An example scenario (from C<Bench::Scenario::Example>):
@@ -59,7 +60,7 @@ An example scenario (from C<Bench::Scenario::Example>):
 
 =head2 participants
 
-B<participants> (array) lists Perl code (or external command) that we want to
+B<participants> (array) lists Perl codes (or external commands) that we want to
 benchmark.
 
 =head3 Specifying participant's code
@@ -404,6 +405,40 @@ isolation.
 Module name can be extracted from a participant if a participant specifies
 C<module> or C<fcall_template> or C<modules>. When a participant does not
 contain any module name, it will be skipped.
+
+
+=head1 MULTIPLE PERLS AND MULTIPLE MODULE VERSIONS
+
+Bencher can be instructed to run benchmark items against multiple perl
+installations, as well as multiple versions of a module.
+
+Bencher uses L<perlbrew> to get the list of available perl installations, so you
+need to install perlbrew and brew some perls first.
+
+To run against multiple versions of a module, specify the module name in
+C<--multimodver> then add one or more library include paths using C<-I>. The
+include paths need to contain different versions of the module.
+
+B<Caveats.> Here is how benchmarking against multiple perls and module versions
+currently works. Bencher first prepares a new scenario based on the input
+scenario. But the new scenario contains benchmark items that has been permuted
+and where the code template has been converted into actual Perl code (a
+coderef). The new scenario along with the Perl codes in it will be dumped using
+L<Data::Dmp> (which can deparse code) into a temporary file. A new Bencher
+process is then started using the appropriate perl interpreter, runs the
+scenario, and returns the result as JSON. The original Bencher process then
+collects and combines the per-interpreter results into the final result.
+
+Due to the above way of working, there are some caveats. First, code that
+contains closures won't work properly because the original variables that the
+code can see are no longer available in the new process. Also, some scenarios
+prepare data in a hook like in the C<before_bench> or C<before_gen_items> hook.
+This also won't work because the new scenario that gets dumped into temporary
+file currently has all the hooks stripped first.
+
+So in principle, to enable a benchmark item to be run against multiple perls or
+module versions, make the code self-sufficient. Do not depend on an outside
+variable. Instead, only depend on the variables in the dataset.
 
 
 =head1 SEE ALSO
