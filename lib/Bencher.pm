@@ -284,6 +284,14 @@ C<--precision> (CLI).
 
 =item * include_result_size (bool)
 
+=item * extra_modules (array of str)
+
+You can specify extra modules to load here before benchmarking. The modules and
+their versions will be listed in the result metadata under
+C<func.module_versions>, for extra information. An example to put here are
+modules that contain/produce datasets that get benchmarked, because the data
+might differ from version to version.
+
 =item * on_failure (str, "skip"|"die")
 
 For a command participant, failure means non-zero exit code. For a Perl-code
