@@ -110,3 +110,10 @@ against version 0.01 (in C</my/home/lib>):
 
 Note that C<Module::Name> must be among the modules that are being benchmarked
 (according to the scenario).
+
+
+=head1 append:ENVIRONMENT
+
+=head2 BENCHER_RESULT_DIR => str
+
+Set default for C<--results-dir>.
