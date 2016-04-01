@@ -9,7 +9,11 @@ Revision history for Bencher
 
 0.46.1  2016-03-31 (PERLANCAR)
 
-        - [dist] Forgot to bump prereq version Bencher::Backend 0.46.
+        - [dist] Forgot to bump prereq version Bencher::Backend 0.46. UPDATE:
+          this version number is broken because 0.46 > 0.46.1 because 0.46
+          normalizes to 0.460.000 while 0.46.1 is 0.046.100. This has happened a
+          few times to me in other distributions too, so perhaps it's time to
+          consider switching to a 3-digit minor version.
 
         - CLI script: Include description from Bencher::Backend.
 
@@ -37,8 +41,8 @@ Revision history for Bencher
 0.38    2016-03-15 (PERLANCAR)
 
 	- [Incompatible change] Split backend to Bencher-Backend to reduce
-	  dependencies when installing Bencher-Backend to a perl installation
-	  (this is part of developing support for benchmarking against multiple
+	  dependencies when installing Bencher to a perl installation (this is
+	  part of developing support for benchmarking against multiple
 	  perls/module versions).
 
 	- Add option --noreturn-meta to disable returning extra metadata.
