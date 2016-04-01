@@ -37,8 +37,9 @@ Revision history for Bencher
 0.38    2016-03-15 (PERLANCAR)
 
 	- [Incompatible change] Split backend to Bencher-Backend to reduce
-	  dependencies (this is part of developing support for benchmarking
-	  against multiple perls/module versions).
+	  dependencies when installing Bencher-Backend to a perl installation
+	  (this is part of developing support for benchmarking against multiple
+	  perls/module versions).
 
 	- Add option --noreturn-meta to disable returning extra metadata.
 
