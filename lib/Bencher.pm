@@ -105,7 +105,10 @@ startup mode.
 
 By using a template, Bencher can generate actual codes from this template by
 combining it with datasets. The words enclosed in C<< <...> >> will be replaced
-with actual arguments specified in L</"datasets">.
+with actual arguments specified in L</"datasets">. The arguments are
+automatically encoded as Perl value, so it's safe to use arrayref or complex
+structures as argument values (however, you can use C<< <...:raw> >> to avoid
+this automatic encoding).
 
 Aside from C<fcall_template>, you can also use C<code_template> (a string
 containing arbitrary code), in the cases where the code you want to benchmark
@@ -127,7 +130,12 @@ Or, if you are benchmarking external commands, you specify C<cmdline> (array or
 strings, or strings) or C<cmdline_template> (array/str) or C<perl_cmdline> or
 C<perl_cmdline_template> instead. An array cmdline will not use shell, while the
 string version will use shell. C<perl_cmdline*> are the same as C<cmdline*>
-except the first implicit argument/prefix is perl.
+except the first implicit argument/prefix is perl. When the cmdline template is
+filled with the arguments, the values will automatically be shell-escaped
+(unless you use the C<< <...:raw> >> syntax).
+
+When using code template, code will be generated and eval-ed in the C<main>
+package.
 
 =head3 Specifying participant's name
 
