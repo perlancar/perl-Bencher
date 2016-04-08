@@ -293,6 +293,38 @@ C<--precision> (CLI).
 
 =item * include_result_size (bool)
 
+Show the size of the item code's return value. Size is measured using
+L<Devel::Size>. The measurement is done once per item when it is testing the.
+
+=item * include_process_size (bool)
+
+Include some memory statistics in each item's result. This currently only works
+on Linux because the measurement is done by reading C</proc/PID/smaps>. Also,
+since this is a per-process information, to get this information each item's
+code will be run by dumping the code (using L<B::Deparse>) into a temporary
+file, then running the file (once per item, after the item's code is completed)
+using a new perl interpreter process. This is done to get a measurement on a
+clean process that does not load Bencher itself or the other items. This also
+means that not all code will work: all the caveats in L</"MULTIPLE PERLS AND
+MULTIPLE MODULE VERSIONS"> apply. In short, all outside data will not be
+available for the code.
+
+Also, this information normally does not make sense for external command
+participants, because what is measured is the memory statistics of the perl
+process itself, not the external command's processes.
+
+=item * capture_stdout (bool)
+
+Useful for silencing command/code that outputs stuffs to stdout. Note that
+output capturing might affect timings if your benchmark code outputs a lot of
+stuffs. See also: C<capture_stderr>.
+
+=item * capture_stderr (bool)
+
+Useful for silencing command/code that outputs stuffs to stderr. Note that
+output capturing might affect timings if your benchmark code outputs a lot of
+stuffs. See also: C<capture_stdout>.
+
 =item * extra_modules (array of str)
 
 You can specify extra modules to load here before benchmarking. The modules and
