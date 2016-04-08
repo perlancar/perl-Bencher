@@ -1,5 +1,16 @@
 Revision history for Bencher
 
+1.005   2016-04-08 (PERLANCAR)
+
+        - No functional changes.
+
+        - Synchronize version number with Bencher::Backend 1.005. Update
+          documentation: document that code template is eval-ed in the 'main'
+          package and note about <VARNAME:raw> syntax in template (1.004),
+          document BENCHER_RESULT_DIR and scenario property 'extra_modules'
+          (1.001).
+
+
 1.000   2016-03-31 (PERLANCAR)
 
         - No functional changes.
