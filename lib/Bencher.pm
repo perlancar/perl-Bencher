@@ -258,11 +258,25 @@ effect of showing nicer names (in the hash keys) for the argument value, e.g.:
 
 =item * include_participant_tags (array of str)
 
-Only include participants having all these tags.
+Only include participants having one of these tags. For example:
+
+ ['a', 'b']
+
+will include all participants having either C<a> or C<b> in their tags. To only
+include participants which have all of C<a> and C<b> in their tags, use:
+
+ ['a & b']
 
 =item * exclude_participant_tags (array of str)
 
-Exclude participants having any of these tags.
+Exclude participants having any of these tags. For example:
+
+ ['a', 'b']
+
+will exclude all participants having either C<a> or C<b> in their tags. To only
+exclude participants which have all of C<a> and C<b> in their tags, use:
+
+ ['a & b']
 
 =back
 
