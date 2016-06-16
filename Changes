@@ -1,5 +1,18 @@
 Revision history for Bencher
 
+1.006   2016-06-16 (PERLANCAR)
+
+	- No functional changes.
+
+	- Bump prereq version of Bencher::Backend to 1.008.
+
+	- Fix documentation about include_participant_tags &
+	  exclude_participant_tags.
+
+	- Show Bencher version as well as Bencher::Backend version in
+	  --version.
+
+
 1.005   2016-04-08 (PERLANCAR)
 
         - No functional changes.
