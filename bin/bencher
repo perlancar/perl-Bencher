@@ -12,6 +12,7 @@ use Perinci::CmdLine::Any;
 binmode(STDOUT, ":utf8");
 Perinci::CmdLine::Any->new(
     url => '/Bencher/Backend/bencher',
+    extra_urls_for_version => ['/Bencher/Backend/', '/Bencher/'],
     log => 1,
     pass_cmdline_object => 1,
 )->run;
