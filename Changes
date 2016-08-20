@@ -1,5 +1,12 @@
 Revision history for Bencher
 
+1.007   2016-06-16 (PERLANCAR)
+
+        - Update to Bencher::Backend 1.018.
+
+        - Add Bencher::Manual::FAQ.
+
+
 1.006   2016-06-16 (PERLANCAR)
 
 	- No functional changes.

@@ -10,6 +10,9 @@ package Rinci; # just to make PodWeaver happy
 
 =head2 What is Bencher?
 
+Bencher is a benchmark framework. It can be used to benchmark Perl code or
+external commands.
+
 =head2 Why should I use Bencher (instead of Benchmark, Dumbbench, ...)?
 
 The main point of Bencher is making your benchmark codes more reusable. Your
