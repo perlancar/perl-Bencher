@@ -59,6 +59,18 @@ above).
 
 =head1 MULTIPLE MODULE VERSIONS
 
+=head2 How do I permute module versions when I use "perl command-line" participant type?
+
+You can set module path in I<PERL5OPT> and permute using C<env_hashes>. Example:
+
+ env_hashes => [
+     {PERL5OPT=>"-Ipath1"},
+     {PERL5OPT=>"-Ipath2"},
+ ],
+ participants => [
+     {perl_cmdline => ['-e', 'do_something()']},
+ ],
+
 
 =head1 BENCHMARKING EXTERNAL COMMANDS
 
