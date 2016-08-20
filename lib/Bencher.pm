@@ -347,6 +347,18 @@ C<func.module_versions>, for extra information. An example to put here are
 modules that contain/produce datasets that get benchmarked, because the data
 might differ from version to version.
 
+=item * env_hashes (array of hash)
+
+With this property, you can permute multiple sets of environment variables.
+Suppose you want to benchmark each participant when running under environment
+variables FOO=0, FOO=1, and FOO=2. You can specify:
+
+ env_hashes => [
+     {FOO=>0},
+     {FOO=>1},
+     {FOO=>2},
+ ]
+
 =item * on_failure (str, "skip"|"die")
 
 For a command participant, failure means non-zero exit code. For a Perl-code
