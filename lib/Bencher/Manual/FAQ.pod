@@ -1,0 +1,71 @@
+package Rinci; # just to make PodWeaver happy
+
+# DATE
+# VERSION
+
+1;
+# ABSTRACT: FAQ for Bencher
+
+=head1 GENERAL
+
+=head2 What is bencher?
+
+=head2 Why should I use bencher (instead of Benchmark, Dumbbench, ...)?
+
+=head2 How do I use bencher?
+
+=head2 What is a scenario?
+
+=head2 What is a participant?
+
+=head2 What is a dataset?
+
+
+=head1 BENCHMARKING PERL CODE
+
+=head2 How do I run a participant in a minimal environment?
+
+Normally when you benchmark a perl code using Bencher, it is run in the same
+process as Bencher framework (and the bencher CLI too, if you run Bencher from
+the CLI) itself. In some cases this is not desirable, for example you might want
+to run a perl code in absence of a module but said module is required and
+already loaded by Bencher.
+
+In these cases, you can use a "perl command-line" participant type instead of
+"perl code" so that your code is run in its own perl interpreter process. For
+example, instead of:
+
+ participants => [
+     # testing speed when no adapter has been configured
+     {code_template => 'state $log = do { require Log::Any; Log::Any->get_logger }; $log->trace("foo")'},
+ ]
+
+you write:
+
+ participants => [
+     # testing speed when no adapter has been configured
+     {perl_cmdline_template => ['-MLog::Any', '-e', 'my $log = Log::Any->get_logger; $log->trace("foo") for 1..1_000_000']},
+ ]
+
+Note that when using "perl command-line" participant, the overhead of starting
+the perl interpreter and compiling your script is included in the benchmark
+time, so you might want to make that overhead relatively small compared to the
+time of running your code (hence the million-times loop in the second example
+above).
+
+
+=head1 MULTIPLE PERLS
+
+
+=head1 MULTIPLE MODULE VERSIONS
+
+
+=head1 BENCHMARKING EXTERNAL COMMANDS
+
+
+=head1 BENCHMARKING PERL COMMANDS
+
+
+=head1 SEE ALSO
+
+C<Bencher::Manual::*>

@@ -499,6 +499,8 @@ variable. Instead, only depend on the variables in the dataset.
 
 L<bencher>
 
+C<Bencher::Manual::*>
+
 B<BenchmarkAnything>. There are lot of overlaps of goals between Bencher and
 this project. I hope to reuse or interoperate parts of BenchmarkAnything, e.g.
 storing Bencher results in a BenchmarkAnything storage backend, sending Bencher

@@ -118,3 +118,12 @@ Note that C<Module::Name> must be among the modules that are being benchmarked
 =head2 BENCHER_RESULT_DIR => str
 
 Set default for C<--results-dir>.
+
+
+=head1 SEE ALSO
+
+L<Bencher>
+
+L<Bencher::Backend>
+
+C<Bencher::Manual::*>
