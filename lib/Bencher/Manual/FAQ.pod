@@ -8,11 +8,30 @@ package Rinci; # just to make PodWeaver happy
 
 =head1 GENERAL
 
-=head2 What is bencher?
+=head2 What is Bencher?
 
-=head2 Why should I use bencher (instead of Benchmark, Dumbbench, ...)?
+=head2 Why should I use Bencher (instead of Benchmark, Dumbbench, ...)?
 
-=head2 How do I use bencher?
+The main point of Bencher is making your benchmark codes more reusable. Your
+benchmark codes are organized into participants and can be specified as
+templates. These codes then can be combined (permuted) with multiple datasets
+and can also be run using different perl versions and different module versions,
+all with specifying just a command-line option. You can select which
+participants or datasets or other permutation combinations to run. You can run
+the codes with the good ol' L<Benchmark.pm|Benchmark> or using the default
+L<Benchmark::Dumb>.
+
+The results are put into a table data structure and can be formatted, split,
+saved/sent to server, or post-processed in other ways.
+
+There are also tools available to chart the results, embed the results into your
+POD, and so on.
+
+=head2 How do I use Bencher?
+
+Bencher can be used via L<CLI|bencher> or as a C<Perl library|Bencher::Backend>.
+
+See also extra CLI's in L<App::BencherUtils>.
 
 =head2 What is a scenario?
 
