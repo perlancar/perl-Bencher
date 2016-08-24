@@ -305,12 +305,12 @@ From DefHash, longer description in Markdown.
 Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
 C<--precision> (CLI).
 
-=item * include_result_size (bool)
+=item * with_result_size (bool)
 
 Show the size of the item code's return value. Size is measured using
 L<Devel::Size>. The measurement is done once per item when it is testing the.
 
-=item * include_process_size (bool)
+=item * with_process_size (bool)
 
 Include some memory statistics in each item's result. This currently only works
 on Linux because the measurement is done by reading C</proc/PID/smaps>. Also,
