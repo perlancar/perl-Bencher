@@ -1,5 +1,12 @@
 Revision history for Bencher
 
+1.009   2016-08-24 (PERLANCAR)
+
+	- No functional changes.
+
+	- [doc] Fix POD's package.
+
+
 1.008   2016-08-24 (PERLANCAR)
 
 	- Adjust to Bencher::Backend 1.020 (include_process_size &
