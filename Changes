@@ -1,5 +1,12 @@
 Revision history for Bencher
 
+1.008   2016-08-24 (PERLANCAR)
+
+	- Adjust to Bencher::Backend 1.020 (include_process_size &
+	  include_result_size renamed to with_process_size &
+	  with_result_size).
+
+
 1.007   2016-06-16 (PERLANCAR)
 
         - Update to Bencher::Backend 1.018.
