@@ -1,4 +1,4 @@
-package Rinci; # just to make PodWeaver happy
+package Bencher::Manual::FAQ; # just to make PodWeaver happy
 
 # DATE
 # VERSION
