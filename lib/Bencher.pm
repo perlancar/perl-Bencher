@@ -305,10 +305,17 @@ From DefHash, longer description in Markdown.
 Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
 C<--precision> (CLI).
 
+=item * with_args_size (bool)
+
+Show the size of the item code's arguments. Size is measured using
+L<Devel::Size>. The measurement is done once per item when it is testing the
+code. See also: C<with_result_size>.
+
 =item * with_result_size (bool)
 
 Show the size of the item code's return value. Size is measured using
-L<Devel::Size>. The measurement is done once per item when it is testing the.
+L<Devel::Size>. The measurement is done once per item when it is testing the
+code. See also: C<with_args_size>.
 
 =item * with_process_size (bool)
 
