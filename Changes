@@ -1,5 +1,12 @@
 Revision history for Bencher
 
+1.010   2016-08-26 (PERLANCAR)
+
+	- No functional changes.
+
+	- [doc] Adjust to Bencher::Backend 1.021 (introduced with_args_size).
+
+
 1.009   2016-08-24 (PERLANCAR)
 
 	- No functional changes.
