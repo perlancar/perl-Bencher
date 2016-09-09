@@ -1,5 +1,13 @@
 Revision history for Bencher
 
+1.011   2016-09-09 (PERLANCAR)
+
+	- [doc] Document per-scenario 'result' property (Bencher::Backend
+	  1.023) and per-dataset 'result' property.
+
+	- [doc] Add Cookbook.pod.
+
+
 1.010   2016-08-26 (PERLANCAR)
 
 	- No functional changes.

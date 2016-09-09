@@ -286,12 +286,7 @@ If a participant fails to return this result, benchmarking will be aborted.
 
 =back
 
-=item * result (any)
-
-Like per-dataset C<result> property, which you normally should use instead of
-this. But this property can be used when a scenario does not have any dataset.
-
-=head3 Other properties
+=head2 Other properties
 
 Other known scenario properties (keys):
 
@@ -315,6 +310,11 @@ From DefHash, longer description in Markdown.
 
 Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
 C<--precision> (CLI).
+
+=item * result (any)
+
+Like per-dataset C<result> property, which you normally should use instead of
+this. But this property can be used when a scenario does not have any dataset.
 
 =item * with_args_size (bool)
 
