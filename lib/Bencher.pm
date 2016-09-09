@@ -278,7 +278,18 @@ exclude participants which have all of C<a> and C<b> in their tags, use:
 
  ['a & b']
 
+=item * result (any)
+
+Specify result that any participant must return. This can be used to verify that
+participant code is correct (returns the desired result) before benchmarking.
+If a participant fails to return this result, benchmarking will be aborted.
+
 =back
+
+=item * result (any)
+
+Like per-dataset C<result> property, which you normally should use instead of
+this. But this property can be used when a scenario does not have any dataset.
 
 =head3 Other properties
 
