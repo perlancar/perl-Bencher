@@ -1,5 +1,13 @@
 Revision history for Bencher
 
+1.024   2016-09-09 (PERLANCAR)
+
+        - Bump version number to re-sync with Bencher::Backend.
+
+        - Update documentation to Bencher::Backend 1.024 (new property
+          'runner').
+
+
 1.011   2016-09-09 (PERLANCAR)
 
 	- [doc] Document per-scenario 'result' property (Bencher::Backend
