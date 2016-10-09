@@ -377,6 +377,14 @@ variables FOO=0, FOO=1, and FOO=2. You can specify:
      {FOO=>2},
  ]
 
+=item * runner (str)
+
+Set which runner to run the benchmark with. Either C<Benchmark::Dumb> (the
+default), C<Benchmark> (C<Benchmark.pm>, to get Benchmark.pm-style output), or
+C<Benchmark::Dumb::SimpleTime> (to be able to run a code with only 1 or 2
+iterations without warning, suitable if your code that runs for at least a few
+seconds and you don't want to wait for too long).
+
 =item * on_failure (str, "skip"|"die")
 
 For a command participant, failure means non-zero exit code. For a Perl-code
