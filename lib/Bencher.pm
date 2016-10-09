@@ -304,6 +304,12 @@ From DefHash, a one-line plaintext summary.
 
 From DefHash, longer description in Markdown.
 
+=item * test (bool, default 1)
+
+By default, participant code is run once first for testing (e.g. whether it dies
+or return the correct result) before benchmarking. If your code runs for many
+seconds, you might want to skip this test and set this to 0.
+
 =item * module_startup (bool)
 
 =item * default_precision (float, between=>[0,1])
