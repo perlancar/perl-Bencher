@@ -1,6 +1,11 @@
 Revision history for Bencher
 
-1.024   2016-09-09 (PERLANCAR)
+1.025   2016-10-09 (PERLANCAR)
+
+        - Adjust to Bencher::Backend 1.025 (new property: test).
+
+
+1.024   2016-10-09 (PERLANCAR)
 
         - Bump version number to re-sync with Bencher::Backend.
 
