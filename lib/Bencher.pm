@@ -459,6 +459,27 @@ If specified, then this code will be called before starting the benchmark. Code
 will be given hash argument with the following keys: C<hook_name>, C<scenario>,
 C<stash>.
 
+=item * before_test_item (code)
+
+If specified, then this code will be called before testing each item's code.
+Code will be given hash argument with the following keys: C<hook_name>,
+C<scenario>, C<stash>, C<item> (itself a hash containing the following keys:
+C<_name>, C<seq>, C<permute>).
+
+=item * after_test_item (code)
+
+If specified, then this code will be called after testing each item's code. Code
+will be given hash argument with the following keys: C<hook_name>, C<scenario>,
+C<stash>, C<item> (itself a hash containing the following keys: C<_name>,
+C<seq>, C<permute>, C<_result>).
+
+Item's code result can be accessed in C<_result> in C<item> hash.
+
+The hook is expected to return false (0 or '') or a string which will be
+interpreted as error message. Thus, this hook can be used to force error during
+an item's test. The hook can be used to check that the item's code has executed
+correctly by checking other side effects aside from the return in C<_result>.
+
 =item * after_bench (code)
 
 If specified, then this code will be called after completing benchmark. Code
