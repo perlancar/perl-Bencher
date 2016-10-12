@@ -34,7 +34,7 @@ L</"datasets">.
 
 B<(Benchmark) item>. Participant that has been permuted with dataset into code
 ready to run. Usually a scenario does not contain items directly, but only
-participants and datasets, and let Bencher permute them into items.
+participants and datasets, and lets Bencher permute these into items.
 
 
 =head1 SCENARIO
