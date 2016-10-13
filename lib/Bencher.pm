@@ -422,27 +422,27 @@ be given hash argument with the following keys: C<hook_name> (str, set to
 C<before_gen_items>), C<scenario> (hash, unparsed scenario), C<stash> (hash,
 which you can use to pass data between hooks).
 
+=item * before_parse_participants (code)
+
+If specified, then this code will be called before parsing/normalizing
+participants from scenario. Code will be given hash argument with the following
+keys: C<hook_name>, C<scenario>, C<stash>.
+
+You can use this hook to, e.g.: generate participants dynamically.
+
+=item * before_parse_datasets (code)
+
+If specified, then this code will be called before parsing/normalizing datasets
+from scenario. Code will be given hash argument with the following keys:
+C<hook_name>, C<scenario>, C<stash>.
+
+You can use this hook to, e.g.: generate datasets dynamically.
+
 =item * after_parse_scenario (code)
 
 If specified, then this code will be called after parsing scenario. Code will be
 given hash argument with the following keys: C<hook_name>, C<scenario> (hash,
 parsed scenario), C<stash>.
-
-=item * before_list_datasets (code)
-
-If specified, then this code will be called before enumerating datasets from
-scenario. Code will be given hash argument with the following keys:
-C<hook_name>, C<scenario>, C<stash>.
-
-You can use this hook to, e.g.: generate datasets dynamically.
-
-=item * before_list_participants (code)
-
-If specified, then this code will be called before enumerating participants from
-scenario. Code will be given hash argument with the following keys:
-C<hook_name>, C<scenario>, C<stash>.
-
-You can use this hook to, e.g.: generate participants dynamically.
 
 =item * before_gen_items (code)
 
