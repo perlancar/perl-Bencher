@@ -1,5 +1,11 @@
 Revision history for Bencher
 
+1.026   2016-10-13 (PERLANCAR)
+
+        - Adjust to Bencher::Backend 1.026 (new hooks
+          before_parse_{datasets,participants}, {before,after}_test_item).
+
+
 1.025   2016-10-09 (PERLANCAR)
 
         - Adjust to Bencher::Backend 1.025 (new property: test).
