@@ -122,6 +122,8 @@ Set default for C<--results-dir>.
 
 =head1 SEE ALSO
 
+L<bencher-tiny> if you want a simpler CLI with no non-core dependencies.
+
 L<Bencher>
 
 L<Bencher::Backend>
