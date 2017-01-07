@@ -1,5 +1,3 @@
-Revision history for Bencher
-
 1.026   2016-10-13 (PERLANCAR)
 
         - Adjust to Bencher::Backend 1.026 (new hooks
