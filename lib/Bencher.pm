@@ -188,7 +188,7 @@ running the benchmark scenario so you don't have to require them manually in
 your code/code template.
 
 The difference with the C<modules> property is: the modules specified in
-C<modules> should be specified as phase=x_benchmarks, rel=x_benchmarked
+C<modules> should be specified as phase=x_benchmarks, rel=x_benchmarks
 prerequisites while modules specified in C<helper_modules> should not. But all
 modules can be specified as phase=x_benchmarks, rel=requires prerequisites.
 
