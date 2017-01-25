@@ -1,3 +1,10 @@
+1.028   2017-01-25 (PERLANCAR)
+
+	- Fix relationship name from x_benchmarked to x_benchmarks to be
+	  consistent with requires [not required], suggests [not
+	  suggested], etc.
+
+
 1.027   2017-01-25 (PERLANCAR)
 
 	- [doc] Document participant property 'helper_modules'
