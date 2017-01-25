@@ -176,6 +176,22 @@ groups of participants having the same tags.
 
 =item * modules (array of str)
 
+These are modules that are to be benchmarked. When running the benchmark
+scenario, these modules will be require'd first, so you don't have to require
+them again manually in your code/code template.
+
+=item * helper_modules (array of str)
+
+These are helper modules that are required when running the participant code,
+but are not the main subject to be benchmarked. They will also be require'd when
+running the benchmark scenario so you don't have to require them manually in
+your code/code template.
+
+The difference with the C<modules> property is: the modules specified in
+C<modules> should be specified as phase=x_benchmarks, rel=x_benchmarked
+prerequisites while modules specified in C<helper_modules> should not. But all
+modules can be specified as phase=x_benchmarks, rel=requires prerequisites.
+
 =item * function (str)
 
 =item * fcall_template (str)
