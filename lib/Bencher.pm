@@ -328,6 +328,8 @@ seconds, you might want to skip this test and set this to 0.
 
 =item * module_startup (bool)
 
+=item * code_startup (bool)
+
 =item * default_precision (float, between=>[0,1])
 
 Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
@@ -519,6 +521,29 @@ You can use this hook to, e.g.: modify the result in some way.
 =head1 USING THE BENCHER COMMAND-LINE TOOL
 
 =head2 Running benchmark
+
+=head2 Running benchmark in code startup mode
+
+Code startup mode can be activated either by specifying C<--code-startup> option
+from the command-line, or by setting C<code_startup> property to true in the
+scenario.
+
+In this mode, instead of running participant's perl code, it runs a perl
+command:
+
+ perl -e 'YOUR_PERL_CODE'
+
+or if there are modules to be loaded:
+
+ perl -MModule1 -MModule2 ... -e 'YOUR_PERL_CODE'
+
+and then comparing the time with the baseline:
+
+ perl -e1
+
+and measure the startup overhead of each code.
+
+See also C<module_startup> mode.
 
 =head2 Running benchmark in module startup mode
 
