@@ -213,7 +213,7 @@ modules can be specified as phase=x_benchmarks, rel=requires prerequisites.
 This is useful when dumping item's codes, so Bencher will use a list context
 when receiving result.
 
-=item * include_by_default> (bool, default 1)
+=item * include_by_default (bool, default 1)
 
 Can be set to false if you want to exclude participant by default when running
 benchmark, unless the participant is explicitly included e.g. using
