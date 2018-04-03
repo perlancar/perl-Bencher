@@ -70,11 +70,14 @@ There are several kinds of code you can specify:
 First, you can just specify C<module> (str, a Perl module name). This is useful
 when running scenario in L<module_startup mode/"Running benchmark in module
 startup mode">. Also useful to instruct Bencher to load the module. When not in
-module startup mode, there is no code in this participant to run.
+module startup mode, there is no code in this participant to run. In addition to
+C<module> you can also specify C<import_args> which can be a string or an
+arrayref.
 
 You can also specify C<modules> (an array of Perl module names) if you want to
 benchmark several modules together. Similarly, this is only useful for running
-in module startup mode.
+in module startup mode. To specify import arguments for each of these modules,
+use C<import_args_array>.
 
 You can specify C<code> (a coderef) which contains the code to benchmark.
 However, the point of Bencher is to use C<fcall_template> or at least
