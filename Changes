@@ -1,3 +1,11 @@
+1.042   2019-11-20  Released-By: PERLANCAR; Urgency: low
+
+        - No functional changes.
+
+        - [build] Rebuild with updated Bencher::Backend to update documentation
+          (e.g. new --cpanmodules-module option).
+
+
 1.041   2018-04-03  Released-By: PERLANCAR
 
 	- Introduce participant's import_args, import_args_array.
