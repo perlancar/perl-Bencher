@@ -85,7 +85,7 @@ C<code_template> to be able to easily permute the code with datasets (see
 below). So you should only specify C<code> when you cannot specify
 C<fcall_template> or C<code_template> or the other way.
 
-You can specify C<fall_template>, and this is the recommended way whenever
+You can specify C<fcall_template>, and this is the recommended way whenever
 possible. It is a string containing a function call code, in the form of:
 
  MODULENAME::FUNCTIONAME(ARG, ...)
