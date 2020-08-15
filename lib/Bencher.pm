@@ -153,7 +153,7 @@ temporary script and run that script with separate perl processes. The dumped
 coderef will lack 'use' statement or code in BEGIN block. Avoid using that in
 your code.
 
-=item *cmdline, cmdline_template, perl_cmdline, perl_cmdline_templates
+=item * cmdline, cmdline_template, perl_cmdline, perl_cmdline_templates
 
 Or, if you are benchmarking external commands, you specify C<cmdline> (array or
 strings, or strings) or C<cmdline_template> (array/str) or C<perl_cmdline> or

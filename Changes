@@ -1,3 +1,12 @@
+1.050   2020-08-15  Released-By: PERLANCAR; Urgency: medium
+
+	- Mention support of loading scenario from Acme::CPANModules::*
+	  module.
+
+	- Mention caveat of missing use/BEGIN-block code in
+	  multiperl/multimodver mode.
+
+
 1.043   2019-11-20  Released-By: PERLANCAR; Urgency: medium
 
         - [build] Rebuild with updated Sah coerce rule module names.
