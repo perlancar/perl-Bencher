@@ -23,8 +23,8 @@ to use. You can also permute multiple perls and multiple module versions.
 
 B<Scenario>. A hash data structure that lists I<participants>, I<datasets>, and
 other things. The bencher CLI can accept a scenario from a module (under
-C<Bencher::Scenario::*> namespace), a script, or from command-line option. See
-L</"SCENARIO">.
+C<Bencher::Scenario::*> namespace or C<Acme::CPANModules::*> namespace), a
+script, or from command-line option. See L</"SCENARIO">.
 
 B<Participant>. What to run or benchmark. Usually a Perl code or code template,
 or a command or command template. See L</"participants">.
