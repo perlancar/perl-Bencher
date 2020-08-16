@@ -361,10 +361,23 @@ seconds, you might want to skip this test and set this to 0.
 
 =item * code_startup (bool)
 
-=item * default_precision (float, between=>[0,1])
+=item * precision (float)
+
+Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
+C<--precision> (CLI). takes precedence over C<default_precision>.
+
+=item * default_precision (float)
+
+(DEPRECATED)
 
 Precision to pass to Benchmark::Dumb. Default is 0. Can be overriden via
 C<--precision> (CLI).
+
+=item * module_startup_precision (float)
+
+Precision to pass to Benchmark::Dumb, when running benchmark in module_startup
+mode. Default is from C<precision> or C<default_precision>. Can be overriden
+with C<--precision> (CLI).
 
 =item * result (any)
 
