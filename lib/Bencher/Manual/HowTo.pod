@@ -1,0 +1,51 @@
+package Bencher::Manual::HowTo; # just to make PodWeaver happy
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
+
+1;
+# ABSTRACT: How-to guides for Bencher
+
+=head1 DESCRIPTION
+
+Keywords: cookbook
+
+
+=head1 TOPIC: GENERAL
+
+
+=head1 TOPIC: MODULES
+
+=head2 Update all modules that are used by participants
+
+ % bencher -m Scenario --list-participant-modules | cpanm -n
+
+This can be used to make sure that you are benchmarking the latest version of
+each module.
+
+Keywords: tip
+
+
+=head1 TOPIC: RUNNER
+
+=head2 Picking a runner
+
+By default, L<bencher> runs the benchmark with L<Dumbbench> which has the
+advantages like fewer required iterations or outliers exclusion. However, you
+can also use the core module L<Benchmark> (Benchmark.pm) as the runner. To
+select a runner:
+
+ % bencher -m Scenario --runner Benchmark       ;# select Benchmark.pm
+ % bencher -m Scenario --runner Benchmark::Dumb ;# select Dumbbench, the default
+
+If you want to use the default Dumbbench runner, but want to format the result
+like Benchmark.pm, use the C<--render-as-benchmark-pm> option (since 1.056):
+
+ % bencher -m Scenario --render-as-benchmark-pm
+
+
+=head1 SEE ALSO
+
+C<Bencher::Manual::*>
