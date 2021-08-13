@@ -1,6 +1,8 @@
 package Bencher;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 1;
@@ -659,3 +661,5 @@ results to a BenchmarkAnything HTTP server, and so on.
 L<Benchmark>, L<Benchmark::Dumb> (L<Dumbbench>)
 
 C<Bencher::Scenario::*> for examples of scenarios.
+
+An article about Bencher written in 2016, L<https://perladvent.org/2016/2016-12-03.html>
