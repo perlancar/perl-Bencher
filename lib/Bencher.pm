@@ -1,5 +1,7 @@
 package Bencher;
 
+use strict;
+
 # AUTHORITY
 # DATE
 # DIST
