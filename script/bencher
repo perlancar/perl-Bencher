@@ -194,7 +194,7 @@ Let's first check whether those functions do the job correctly:
  #4 (participant=Text::Minify::XS::minify):
  "xxxxxxxxxx"
 
-=head2 Selecting only certain participants and datasets
+=head3 Selecting only certain participants and datasets
 
 Let's benchmark trimming short strings:
 
