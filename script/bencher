@@ -80,9 +80,8 @@ Next, run the scenario (do the benchmarking):
  +--------------------------------+-----------+-----------+-----------+-----------------------+-----------------------+---------+---------+
 
 From the result, we see that L<String::Trim::Regex> is slower than
-L<String::Trim::NonRegex>. But both are obliterated by
-L<Text::Minify::XS::minify_ascii>, which is no surprise since it is an XS
-module.
+L<String::Trim::NonRegex>. But both are obliterated by L<Text::Minify::XS>,
+which is no surprise since it is an XS module.
 
 You'll notice that the benchmark runs pretty quickly because it uses
 L<Benchmarakr::Dumb> by default, so each code only needs to be run a few times
