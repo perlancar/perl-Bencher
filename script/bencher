@@ -84,7 +84,7 @@ L<String::Trim::NonRegex>. But both are obliterated by L<Text::Minify::XS>,
 which is no surprise since it is an XS module.
 
 You'll notice that the benchmark runs pretty quickly because it uses
-L<Benchmarakr::Dumb> by default, so each code only needs to be run a few times
+L<Benchmark::Dumb> by default, so each code only needs to be run a few times
 instead of seconds-long like with L<Benchmark>.pm. You'll also notice the output
 is in table form, showing the code from slowest to fastest. If you prefer the
 Benchmark.pm matrix output, use the C<-B> option:
