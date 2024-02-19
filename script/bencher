@@ -24,6 +24,25 @@ Perinci::CmdLine::Any->new(
 
 =head1 SYNOPSIS
 
+# BEGIN_CODE
+# show generated usage line
+
+require Bencher::Backend;
+require Perinci::CmdLine::Dump;
+
+my $res = Perinci::CmdLine::Dump::dump_pericmd_script(filename=>"script/bencher", libs=>["lib"]);
+die "Can't dump script/bencher: $res->[0] - $res->[1]" unless $res->[0] == 200;
+my $cli = $res->[2];
+
+require Perinci::Sub::To::CLIDocData;
+$res = Perinci::Sub::To::CLIDocData::gen_cli_doc_data_from_meta(meta => $Bencher::Backend::SPEC{bencher}, common_opts => $cli->{common_opts});
+die "Can't gen_cli_doc_data_from_meta(): $res->[0] - $res->[1]" if $res->[0] != 200;
+my $usage = $res->[2]{'usage_line.alt.fmt.pod'};
+$usage =~ s/\[\[prog\]\]/B<bencher>/;
+print "$usage\n\n";
+
+# END_CODE
+
 =head2 Getting started and basic usage
 
 To benchmark things, you write a I<scenario> file. Let's write a simple one that
